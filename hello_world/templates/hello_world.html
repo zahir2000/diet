@@ -1,5 +1,54 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Diet Calculator</title>
+</head>
+<body>
 
-{% block page_content %}
-<h1>Hello, World!</h1>
-{% endblock %}
+	{% extends "base.html" %}
+
+	{% block page_content %}
+
+	<div class="container">
+		<h1>Diet Calculator</h1>
+
+		<form class="form-inline" method='POST' action="" enctype='multipart/form-data'>{% csrf_token %}
+			<div class="form-group">
+				<!--	{{form.NUMS}} -->
+			</div>
+
+			<div class="form-group">
+				<input type="hidden" name="sales">
+				<label for="" class="">Gender</label>
+				<select name="gender" class="form-control ml-3">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-primary btn-block mt-3">Calculate</button>
+		</form>
+
+		<br/>
+		<div class="alert {{ alert | safe }}" role="alert">
+			{{ optimal | safe }}
+		</div>
+
+		{% for x in foods %}
+		{{ x }}
+		<br/>
+		{% endfor %}
+
+		<br/>
+
+		{% for n in nutrient %}
+		{{ n }}
+		<br/>
+		{% endfor %}
+	</div>
+	{% endblock %}
+
+</body>
+</html>
