@@ -1,4 +1,4 @@
-# WQD7011 Assignment
+# Assignment
 
 ## Topic:
 - Minimizing Costs on a Healthy Diet for the Post Covid-19 Era using Linear Programming
