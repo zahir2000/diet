@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Diet Calculator</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#gender').on('change', function() {
+			if ($("#gender").val() === "custom") {
+				$("#custom_div").show()
+			} else {
+				$("#custom_div").hide()
+			}
+		});
+	});
+
+	/*
+custom_calorie
+custom_manga
+custom_zinc
+custom_iron
+custom_calc
+custom_vitK
+custom_vitE
+custom_vitD
+custom_vitC
+custom_vitA
+custom_fruit
+custom_meat
+custom_chol
+custom_added_sugar
+custom_sat_fat
+custom_carb
+custom_protein
+custom_max_sodium
+custom_min_sodium
+custom_max_fibre
+custom_min_fibre
+custom_max_fat
+custom_min_fat
+	*/
+
+	function default_values(e) {
+		selectedIndex = e.target.value
+
+		if (selectedIndex == 1) {
+			document.getElementById("custom_calorie").value = 2190
+			document.getElementById("custom_manga").value = 2300
+			document.getElementById("custom_zinc").value = 6.5
+			document.getElementById("custom_iron").value = 9
+			document.getElementById("custom_calc").value = 1000
+			document.getElementById("custom_vitK").value = 65
+			document.getElementById("custom_vitE").value = 10
+			document.getElementById("custom_vitD").value = 15
+			document.getElementById("custom_vitC").value = 70
+			document.getElementById("custom_vitA").value = 600
+			document.getElementById("custom_fruit").value = 400
+			document.getElementById("custom_meat").value = 100
+			document.getElementById("custom_chol").value = 300
+			document.getElementById("custom_added_sugar").value = 50
+			document.getElementById("custom_sat_fat").value = 20
+			document.getElementById("custom_carb").value = 325
+			document.getElementById("custom_protein").value = 61
+			document.getElementById("custom_max_sodium").value = 2300
+			document.getElementById("custom_min_sodium").value = 1500
+			document.getElementById("custom_max_fibre").value = 70
+			document.getElementById("custom_min_fibre").value = 20
+			document.getElementById("custom_max_fat").value = 73
+			document.getElementById("custom_min_fat").value = 61
+		} else if (selectedIndex == 2) {
+			document.getElementById("custom_calorie").value = 1900
+			document.getElementById("custom_manga").value = 1800
+			document.getElementById("custom_zinc").value = 4.6
+			document.getElementById("custom_iron").value = 20
+			document.getElementById("custom_calc").value = 1000
+			document.getElementById("custom_vitK").value = 55
+			document.getElementById("custom_vitE").value = 7.5
+			document.getElementById("custom_vitD").value = 15
+			document.getElementById("custom_vitC").value = 70
+			document.getElementById("custom_vitA").value = 600
+			document.getElementById("custom_fruit").value = 400
+			document.getElementById("custom_meat").value = 100
+			document.getElementById("custom_chol").value = 300
+			document.getElementById("custom_added_sugar").value = 50
+			document.getElementById("custom_sat_fat").value = 20
+			document.getElementById("custom_carb").value = 325
+			document.getElementById("custom_protein").value = 52
+			document.getElementById("custom_max_sodium").value = 2300
+			document.getElementById("custom_min_sodium").value = 1500
+			document.getElementById("custom_max_fibre").value = 70
+			document.getElementById("custom_min_fibre").value = 20
+			document.getElementById("custom_max_fat").value = 63
+			document.getElementById("custom_min_fat").value = 53
+		} else if (selectedIndex == 3) {
+			document.getElementById("custom_calorie").value = 1750
+			document.getElementById("custom_manga").value = 1500
+			document.getElementById("custom_zinc").value = 5.7
+			document.getElementById("custom_iron").value = 6
+			document.getElementById("custom_calc").value = 1000
+			document.getElementById("custom_vitK").value = 25
+			document.getElementById("custom_vitE").value = 7
+			document.getElementById("custom_vitD").value = 15
+			document.getElementById("custom_vitC").value = 35
+			document.getElementById("custom_vitA").value = 500
+			document.getElementById("custom_fruit").value = 400
+			document.getElementById("custom_meat").value = 100
+			document.getElementById("custom_chol").value = 300
+			document.getElementById("custom_added_sugar").value = 50
+			document.getElementById("custom_sat_fat").value = 20
+			document.getElementById("custom_carb").value = 325
+			document.getElementById("custom_protein").value = 23
+			document.getElementById("custom_max_sodium").value = 2300
+			document.getElementById("custom_min_sodium").value = 1200
+			document.getElementById("custom_max_fibre").value = 70
+			document.getElementById("custom_min_fibre").value = 20
+			document.getElementById("custom_max_fat").value = 68
+			document.getElementById("custom_min_fat").value = 49
+		} else if (selectedIndex == 4) {
+			document.getElementById("custom_calorie").value = 1750
+			document.getElementById("custom_manga").value = 1500
+			document.getElementById("custom_zinc").value = 5.6
+			document.getElementById("custom_iron").value = 6
+			document.getElementById("custom_calc").value = 1000
+			document.getElementById("custom_vitK").value = 25
+			document.getElementById("custom_vitE").value = 7
+			document.getElementById("custom_vitD").value = 1
+			document.getElementById("custom_vitC").value = 35
+			document.getElementById("custom_vitA").value = 500
+			document.getElementById("custom_fruit").value = 400
+			document.getElementById("custom_meat").value = 100
+			document.getElementById("custom_chol").value = 300
+			document.getElementById("custom_added_sugar").value = 50
+			document.getElementById("custom_sat_fat").value = 20
+			document.getElementById("custom_carb").value = 325
+			document.getElementById("custom_protein").value = 23
+			document.getElementById("custom_max_sodium").value = 2300
+			document.getElementById("custom_min_sodium").value = 1200
+			document.getElementById("custom_max_fibre").value = 70
+			document.getElementById("custom_min_fibre").value = 20
+			document.getElementById("custom_max_fat").value = 63
+			document.getElementById("custom_min_fat").value = 45
+		}
+
+		if (selectedIndex == 0) {
+			var elements = document.getElementsByTagName("input");
+			for (var ii=0; ii < elements.length; ii++) {
+			  if (elements[ii].type == "text") {
+			    elements[ii].value = "";
+			  }
+			}
+		}
+		
+	}
+</script>
+
+<body>
+
+	{% extends "base.html" %}
+
+	{% block page_content %}
+
+	<div class="container">
+		<h1>Diet Calculator</h1>
+
+		<form class="" method='POST' action="" enctype='multipart/form-data'>{% csrf_token %}
+			<div class="form-group">
+				<!--	{{form.NUMS}} -->
+			</div>
+
+			<div class="form-group">
+				<input type="hidden" name="sales">
+				<label for="" class="">Category</label>
+				<select name="gender" id="gender" onchange="choiceSelected('gender', this.selectedIndex);" class="form-control">
+					<option value="male">Adult (Male)</option>
+					<option value="female">Adult (Female)</option>
+					<option value="children">Children</option>
+					<option value="custom">Make Your Own Diet</option>
+				</select>
+			</div>
+
+			<div id="custom_div" style="display:none">
+				<div class="row ml-0 pl-0 align-items-center">
+					<div class="col-md" style="text-align: right;" >
+						<label class="right">Choose from Default Values:</label>
+					</div>
+					<div class="col-md">
+						<div class="form-group">
+							<input type="hidden" name="default2">
+							<select name="default" id="default" onchange="default_values(event)" class="form-control">
+								<option value="0">Enter Your Own</option>
+								<option value="1">Adult (Male)</option>
+								<option value="2">Adult (Female)</option>
+								<option value="3">Child (Male)</option>
+								<option value="4">Child (Female)</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<!-- COLUMN 1 -->
+					<div class="col-md">
+						<div class="row">
+							<div class="col-md">
+								<div class="mb-2">
+									<label class="row align-items-center ml-0 pb-0 mb-0">Total Fat (g):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 0 - 100</small>
+									</label>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-6" id="custom_fat_div">
+										<input type="input" name="custom_min_fat" id="custom_min_fat" class="form-control" id="custom_min_fat" placeholder="min">
+									</div>
+									<div class="form-group col-md-6" id="custom_fibre_div">
+										<input type="input" name="custom_max_fat" id="custom_max_fat" class="form-control" id="custom_max_fat" placeholder="max">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Fibre (g):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 0 - 100</small>
+									</label>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-6" id="custom_fibre_div">
+										<input type="input" name="custom_min_fibre" id="custom_min_fibre" class="form-control" id="custom_min_fibre" placeholder="min">
+									</div>
+									<div class="form-group col-md-6" id="custom_fibre_div">
+										<input type="input" name="custom_max_fibre" id="custom_max_fibre" class="form-control" id="custom_max_fibre" placeholder="max">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Sodium (mg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 1000 - 3000</small>
+									</label>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-6" id="custom_fibre_div">
+										<input type="input" name="custom_min_sodium" id="custom_min_sodium" class="form-control" id="custom_min_sodium" placeholder="min">
+									</div>
+									<div class="form-group col-md-6" id="custom_fibre_div">
+										<input type="input" name="custom_max_sodium" id="custom_max_sodium" class="form-control" id="custom_max_sodium" placeholder="max">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group" id="custom_protein_div">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Protein (g):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 0 - 100</small>
+									</label>
+									<input type="input" name="custom_protein" id="custom_protein" class="form-control" id="custom_protein" placeholder="min. protein">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Max. Carbohydrates (g):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 200 - 400</small>
+									</label>
+									<input type="input" name="custom_carb" id="custom_carb" class="form-control" id="custom_carb">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Max. Saturated Fats (g):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 10 - 30</small>
+									</label>
+									<input type="input" name="custom_sat_fat" id="custom_sat_fat" class="form-control" id="custom_sat_fat">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Max. Added Sugar (g):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 20 - 60</small>
+									</label>
+									<input type="input" name="custom_added_sugar" id="custom_added_sugar" class="form-control" id="custom_added_sugar">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Max. Cholesterol (mg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 200 - 400</small>
+									</label>
+									<input type="input" name="custom_chol" id="custom_chol" class="form-control" id="custom_chol">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Max. Meat Products (g):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 50 - 300</small>
+									</label>
+									<input type="input" name="custom_meat" id="custom_meat" class="form-control" id="custom_meat">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Min. Fruit Products (g):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 400 - 1200</small>
+									</label>
+									<input type="input" name="custom_fruit" id="custom_fruit" class="form-control" id="custom_fruit">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- COLUMN 2 -->
+					<div class="col-md">
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Vitamin A (µg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 100 - 1000</small>
+									</label>
+									<input type="input" name="custom_vitA" id="custom_vitA" class="form-control" id="custom_vitA" placeholder="min. vitamin A">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Vitamin C (mg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 10 - 100</small>
+									</label>
+									<input type="input" name="custom_vitC" id="custom_vitC" class="form-control" id="custom_vitC" placeholder="min. vitamin C">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Vitamin D (µg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 5 - 20</small>
+									</label>
+									<input type="input" name="custom_vitD" id="custom_vitD" class="form-control" id="custom_vitD" placeholder="min. vitamin D">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Vitamin E (mg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 0 - 10</small>
+									</label>
+									<input type="input" name="custom_vitE" id="custom_vitE" class="form-control" id="custom_vitE" placeholder="min. vitamin E">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Vitamin K (µg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 0 - 100</small>
+									</label>
+									<input type="input" name="custom_vitK" id="custom_vitK" class="form-control" id="custom_vitK" placeholder="min. vitamin K">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Calcium (mg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 100 - 1200</small>
+									</label>
+									<input type="input" name="custom_calc" id="custom_calc" class="form-control" id="custom_calc" placeholder="min. calcium">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Iron (mg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 1 - 20</small>
+									</label>
+									<input type="input" name="custom_iron" id="custom_iron" class="form-control" id="custom_iron" placeholder="min. iron">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Zinc (mg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 1 - 13</small>
+									</label>
+									<input type="input" name="custom_zinc" id="custom_zinc" class="form-control" id="custom_zinc" placeholder="min. zinc">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md">
+								<div class="form-group">
+									<label class="row align-items-center ml-0 pb-2 mb-0">Manganese (µg):
+										<small style="font-size: 60%" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 1000 - 3000</small>
+									</label>
+									<input type="input" name="custom_manga" id="custom_manga" class="form-control" id="custom_manga" placeholder="min. manganese">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" id="custom_calorie_div">
+					<label style="font-weight: bold;" class="row align-items-center ml-0 pb-2 mb-0">Enter Your Desired Calories:
+						<small style="font-size: 60%;" class="form-text text-muted pt-0 mt-0 ml-2">Suggested Range: 1500 - 2300</small>
+					</label>
+					<input type="input" name="custom_calorie" id="custom_calorie" class="form-control" id="custom_calorie" placeholder="min. calories">
+				</div>
+				
+			</div>
+
+			<button type="submit" class="btn btn-primary btn-block">Calculate</button>
+		</form>
+<!--
+TODO: 
+Automatic Input Default Values
+Show Custom Constraints
+Fix Output Formatting
+-->
+<br/>
+<div class="alert {{ alert | safe }}" role="alert">
+	{{ optimal | safe }}
+</div>
+
+<label style="font-weight: bold" class="pt-2">{{ diet_plan | safe }}</label>
+<table class="table table-bordered table-hover table-sm">
+  <tr>
+    {% for col in df_food.columns %}
+      <td>
+        {{col}}
+      </td>
+    {% endfor %}
+  </tr>
+    {% for index, row in df_food.iterrows %}
+      <tr>
+        {% for cell in row %}
+          <td>
+            {{cell}}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+</table>
+
+{% for x in foods %}
+{{ x }}
+<br/>
+{% endfor %}
+
+<label style="font-weight: bold" class="pt-2">{{ nutrient_check | safe }}</label>
+<table class="table table-bordered table-hover table-sm">
+  <tr>
+    {% for col in df_nutrient.columns %}
+      <td>
+        {{col}}
+      </td>
+    {% endfor %}
+  </tr>
+    {% for index, row in df_nutrient.iterrows %}
+      <tr>
+        {% for cell in row %}
+          <td>
+            {{cell}}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+</table>
+
+{% for n in nutrient %}
+{{ n }}
+<br/>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+</body>
+</html>
