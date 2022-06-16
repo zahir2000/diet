@@ -36,6 +36,8 @@ def calculate(gender,
     df['Meat'] = df['Meat'].astype(int)
     df['FruitVeg'] = fruit | veg
     df['FruitVeg'] = df['FruitVeg'].astype(int)
+    df['Condiment'] = df['Category'] == "Condiment"
+    df['Condiment'] = df['Condiment'].astype(int)
 
     #select columns
     columns3 = []
@@ -65,6 +67,7 @@ def calculate(gender,
     columns3.append("Fat, total (g/100g)")
     columns3.append("Fibre, total dietary (g/100g)")
     columns3.append("Sodium (mg/100g)")
+    columns3.append("Condiment")
     columns3
 
     df2 = df[columns3]
@@ -99,7 +102,8 @@ def calculate(gender,
             ["Manganese (μg/100g)", 2300],
             ["Fat, total (g/100g)", 61],
             ["Fibre, total dietary (g/100g)", 70],
-            ["Sodium (mg/100g)", 1500]
+            ["Sodium (mg/100g)", 1500],
+            ["Condiment", 0.06]
         ]
     elif (gender == 'female'):
         nutrients2 = [
@@ -125,7 +129,8 @@ def calculate(gender,
             ["Manganese (μg/100g)", 1800],
             ["Fat, total (g/100g)", 53],
             ["Fibre, total dietary (g/100g)", 70],
-            ["Sodium (mg/100g)", 1500]
+            ["Sodium (mg/100g)", 1500],
+            ["Condiment", 0.06]
         ]
     elif (gender == 'children'):
         nutrients2 = [
@@ -151,7 +156,8 @@ def calculate(gender,
             ["Manganese (μg/100g)", 1500],
             ["Fat, total (g/100g)", 49],
             ["Fibre, total dietary (g/100g)", 70],
-            ["Sodium (mg/100g)", 1200]
+            ["Sodium (mg/100g)", 1200],
+            ["Condiment", 0.06]
         ]
 
     elif (gender == 'custom'):
@@ -225,7 +231,8 @@ def calculate(gender,
             ["Manganese (μg/100g)", custom_manga],
             ["Fat, total (g/100g)", custom_min_fat],
             ["Fibre, total dietary (g/100g)", custom_max_fibre],
-            ["Sodium (mg/100g)", custom_min_sodium]
+            ["Sodium (mg/100g)", custom_min_sodium],
+            ["Condiment", 0.06]
         ]
 
     # our data
@@ -275,10 +282,6 @@ def calculate(gender,
             print('A potentially suboptimal solution was found.')
         else:
             print('The solver could not solve the problem.')
-
-
-    str_foods = []
-    str_nutrient = []
 
     if status == solver.OPTIMAL:
         # Display the amounts (in dollars) to purchase of each food.
